@@ -1,0 +1,48 @@
+// FKBC - Badges
+
+// Badges
+
+.user-badge,
+.user-card .badge-section .more-user-badges a {
+  border-radius: var(--d-default-border-radius);
+}
+
+.badge-category__wrapper {
+  .badge-category {
+    &:before {
+      border-radius: 50%;
+    }
+  }
+}
+
+p.favorite-count {
+  margin: 0 0 20px 0;
+}
+
+.extra-info-wrapper {
+  .topic-statuses {
+    .d-icon {
+      color: var(--header_primary);
+    }
+  }
+  .topic-header-extra .discourse-tags {
+    a {
+      color: var(--header_primary) !important;
+    }
+  }
+}
+
+.badge-card {
+  @include bg-br;
+  .favorite-btn {
+    box-shadow: 0px 0px 0px 1px var(--primary-low);
+    border-radius: var(--d-default-border-radius);
+  }
+}
+
+.show-badge-details .badge-set-title {
+  @include bg-br;
+  .user-content {
+    box-shadow: none;
+  }
+}

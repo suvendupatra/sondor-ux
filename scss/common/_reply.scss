@@ -1,0 +1,503 @@
+.composer-popup {
+  border-radius: $modal-border-radius;
+  box-shadow: $modal-box-shadow;
+  margin-left: $card-padding-x;
+  padding: $modal-padding-y $modal-padding-x;
+  top: ($material-icon-size + $spacer * 2);
+  bottom: ($btn-height + $card-padding-y + $spacer);
+  left: 50%;
+  width: calc(50% - #{$card-padding-x * 2});
+
+  a {
+    &.close {
+      color: color-chooser($white-secondary, $black-secondary);
+      float: right;
+      font-size: $font-size-base;
+      opacity: 1;
+      position: relative;
+      top: 0;
+      right: 0;
+
+      @include active-focus-hover {
+        color: color-chooser($white-primary, $black-primary);
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+#reply-control {
+  background-color: color-chooser($modal-bg-dark, $modal-bg-light);
+  border-radius: ($modal-border-radius * 2) ($modal-border-radius * 2) 0 0;
+  box-shadow: $modal-box-shadow;
+
+  &.closed {
+    display: none;
+  }
+
+  &.draft {
+    background-color: color-chooser($modal-bg-light, $modal-bg-dark);
+    color: color-chooser($black-secondary, $white-secondary);
+    height: ($material-icon-size + $spacer) !important;
+    left: auto;
+    width: auto;
+
+    .composer-controls {
+      margin-right: $card-padding-x;
+      padding-right: 0;
+    }
+
+    .draft-text {
+      color: inherit;
+      line-height: $material-icon-size;
+      margin-right: $card-inner-spacer-x;
+      margin-left: $card-padding-x;
+      padding-left: 0;
+
+      @include focus-hover {
+        color: color-chooser($black-primary, $white-primary);
+      }
+
+      &:active {
+        color: color-chooser($black-primary, $white-primary);
+      }
+    }
+
+    .span24 {
+      display: block;
+      float: none;
+      width: auto;
+    }
+  }
+
+  &.edit-title {
+    .contents {
+      input {
+        &#reply-title {
+          border: 0;
+          height: auto;
+          margin: 0;
+          padding: $card-padding-y $card-padding-x;
+
+          @include focus-hover {
+            padding-bottom: $card-padding-y;
+          }
+        }
+      }
+    }
+  }
+
+  &.fullscreen {
+    max-width: 100%;
+    right: 0;
+
+    &.show-preview {
+      .d-editor-textarea-wrapper {
+        .fullscreen-composer & {
+          border-right: 0;
+        }
+      }
+    }
+
+    .d-editor-preview-wrapper {
+      .fullscreen-composer & {
+        margin-top: 0;
+      }
+    }
+
+    .grippie {
+      border-radius: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    .reply-to {
+      .fullscreen-composer & {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &.hide-preview .toggle-preview::before {
+    content: 'keyboard_arrow_left';
+  }
+
+  &.saving {
+    .grippie {
+      display: none;
+    }
+
+    .spinner {
+      height: ($font-size-base * $line-height-base);
+      margin: 0 0 0 ($card-inner-spacer-x / 2);
+      vertical-align: middle;
+      width: ($font-size-base * $line-height-base);
+    }
+  }
+
+  .add-warning {
+    margin-right: $card-padding-x;
+    margin-left: 0;
+    position: static;
+    width: auto;
+
+    input[type='checkbox'] {
+      margin-right: $spacer-xs;
+    }
+
+    label {
+      margin-bottom: 0;
+    }
+  }
+
+  .category-input {
+    margin: 0 $card-inner-spacer-x ($card-inner-spacer-y / 2) 0;
+  }
+
+  .composer-bottom-right {
+    flex-basis: auto;
+    flex-shrink: 0;
+  }
+
+  .composer-fields {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  .control-row {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 0;
+
+    &.reply-area {
+      padding: 0;
+    }
+  }
+
+  .d-editor {
+    display: flex;
+    min-height: 1px;
+  }
+
+  .d-editor-container {
+    min-width: 1px;
+  }
+
+  .d-editor-preview {
+    border: 0;
+    border-radius: 0;
+
+    img:not(.avatar):not(.emoji):not(.site-icon):not(.thumbnail) {
+      height: auto;
+      max-width: 100%;
+    }
+  }
+
+  .d-editor-preview-wrapper {
+    margin-left: 0;
+    max-width: 50%;
+    min-width: 1px;
+  }
+
+  .d-editor-textarea-wrapper {
+    border: 0;
+    border-radius: 0;
+    min-width: 1px;
+  }
+
+  #edit-reason {
+    background-color: color-chooser($white-divider, $black-divider);
+    color: inherit;
+    font-size: $font-size-sm;
+    margin: 0 0 0 ($card-inner-spacer-x / 2);
+    min-height: $material-icon-size;
+    padding: 0 ($card-inner-spacer-x / 2);
+  }
+
+  .grippie {
+    align-items: center;
+    background-color: color-chooser($modal-bg-light, $modal-bg-dark);
+    color: color-chooser($black-secondary, $white-secondary);
+    display: flex;
+    flex-shrink: 0;
+    height: ($material-icon-size + $spacer);
+    justify-content: center;
+    padding: 0;
+
+    @media (min-width: ($container-max-width + 1)) {
+      border-radius: $modal-border-radius $modal-border-radius 0 0;
+    }
+
+    &::before {
+      @extend %material-icons;
+
+      border: 0;
+      content: 'drag_handle';
+    }
+  }
+
+  .mini-tag-chooser {
+    background-color: transparent;
+    margin: 0 $card-inner-spacer-x ($card-inner-spacer-y / 2) 0;
+  }
+
+  .popup-menu {
+    @include dropdown-menu;
+
+    h3 {
+      @include dropdown-header;
+    }
+
+    .btn {
+      @include dropdown-link;
+    }
+  }
+
+  .reply-area {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 1px;
+    padding: 0;
+
+    .ac-wrap {
+      margin-right: $card-padding-x;
+    }
+  }
+
+  #reply-title {
+    margin: 0;
+  }
+
+  .reply-to {
+    color: color-chooser($black-secondary, $white-secondary);
+    margin: 0;
+
+    .action-title {
+      line-height: $material-icon-size;
+      min-width: 0;
+    }
+
+    .avatar {
+      margin-right: $spacer-x-inline;
+      margin-left: $spacer-x-inline;
+    }
+
+    .btn {
+      background-image: none;
+      border: 0;
+      box-shadow: none;
+      color: inherit;
+      margin-right: ($card-inner-spacer-x / 2);
+      min-height: $material-icon-size;
+
+      @include focus-hover {
+        background-color: transparent;
+        color: color-chooser($black-primary, $white-primary);
+      }
+
+      &:active,
+      &.is-focused {
+        color: color-chooser($black-primary, $white-primary);
+      }
+
+      .d-icon {
+        color: inherit;
+      }
+    }
+
+    .composer-action-title {
+      img {
+        &.avatar {
+          margin-right: $spacer-xs;
+        }
+      }
+
+      .avatar {
+        vertical-align: bottom;
+      }
+
+      .d-icon,
+      .user-link {
+        margin-right: 0;
+      }
+
+      .topic-link {
+        color: inherit;
+        margin-right: 0;
+
+        @include focus-hover {
+          color: color-chooser($black-primary, $white-primary);
+        }
+
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+
+    .composer-controls {
+      position: absolute;
+      top: ($spacer / 2);
+      right: $card-padding-x;
+
+      .btn-flat {
+        color: color-chooser($black-secondary, $white-secondary);
+        height: $material-icon-size;
+        margin-left: $card-inner-spacer-x;
+        padding: 0;
+        width: $material-icon-size;
+
+        @include focus-hover {
+          background-color: transparent;
+          color: color-chooser($black-primary, $white-primary);
+        }
+
+        &:active {
+          color: color-chooser($black-primary, $white-primary);
+        }
+      }
+
+      .d-icon {
+        color: inherit;
+      }
+    }
+
+    .reply-details {
+      max-width: calc(50% - #{$material-icon-size / 2 + $card-inner-spacer-x + $card-padding-x});
+      position: absolute;
+      top: ($spacer / 2);
+      left: $card-padding-x;
+
+      .d-icon {
+        opacity: 1;
+      }
+    }
+  }
+
+  .save-or-cancel {
+    flex-grow: 1;
+
+    #draft-status {
+      color: unquote('$tertiary');
+      margin-left: $card-inner-spacer-x;
+
+      &:empty {
+        display: none;
+      }
+    }
+  }
+
+  .select-kit {
+    &.dropdown-select-box.toolbar-popup-menu-options .select-kit-body {
+      padding-top: $dropdown-padding-y;
+      padding-bottom: $dropdown-padding-y;
+
+      .select-kit-collection {
+        border-radius: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  .submit-panel {
+    border-top: $border-width solid color-chooser($white-divider, $black-divider);
+    margin: 0;
+    padding: ($card-padding-y / 2) $card-padding-x;
+
+    .cancel {
+      @include btn-base;
+
+      margin-left: ($card-inner-spacer-x / 2);
+    }
+  }
+
+  .title-and-category {
+    margin-top: ($card-inner-spacer-y / 2);
+    margin-bottom: 0;
+    padding-right: $card-inner-spacer-x;
+    padding-left: $card-padding-x;
+  }
+
+  .title-input {
+    margin: 0 $card-inner-spacer-x ($card-inner-spacer-y / 2) 0;
+  }
+
+  .toggle-preview {
+    @include btn-base;
+
+    margin-right: ($card-padding-x / -2);
+    overflow: hidden;
+    padding-right: ($card-padding-x / 2);
+    padding-left: ($card-padding-x / 2);
+    text-indent: ($card-padding-x + $material-icon-size);
+    width: ($card-padding-x + $material-icon-size);
+
+    &::before {
+      @extend %material-icons;
+
+      align-items: center;
+      content: 'keyboard_arrow_right';
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      text-indent: 0;
+    }
+  }
+
+  .user-selector {
+    margin-top: ($card-inner-spacer-y / 2);
+    margin-bottom: ($card-inner-spacer-y / 2);
+    padding-left: $card-padding-x;
+
+    .ac-wrap {
+      background-color: transparent;
+      border-top: 0;
+      border-right: 0;
+      border-left: 0;
+      border-radius: 0;
+      min-height: $text-field-height;
+      padding: 0 $text-field-padding-x;
+
+      @include focus-hover {
+        border-width: $text-field-border-width;
+        box-shadow: inset 0 ($text-field-border-width * -2) 0 ($text-field-border-width * -1) color-chooser($text-field-border-color-dark, $text-field-border-color-light);
+      }
+
+      input[type='text'] {
+        margin-top: $text-field-padding-y;
+        margin-bottom: ($text-field-padding-y - $text-field-border-width);
+      }
+
+      .item {
+        margin-top: 0;
+        margin-bottom: ($text-field-height - $text-field-border-width - $chip-height);
+      }
+    }
+
+    .add-warning {
+      margin-bottom: 0;
+    }
+  }
+
+  .wmd-controls {
+    min-height: 1px;
+  }
+}

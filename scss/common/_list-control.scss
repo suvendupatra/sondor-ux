@@ -1,0 +1,28 @@
+ol {
+  &.category-breadcrumb {
+    margin: 0 0 $spacer-y;
+
+    li {
+      margin-right: $spacer-x-inline;
+    }
+  }
+}
+
+.list-controls {
+  margin-bottom: 0;
+
+  .btn {
+    font-size: $btn-font-size;
+    font-weight: $btn-font-weight;
+    margin: 0 0 $spacer-y $spacer-x-inline;
+  }
+
+  .nav {
+    margin: 0 auto $spacer-y 0;
+    text-transform: uppercase;
+  }
+
+  .nav-pills > li {
+    margin-right: $spacer-x-inline;
+  }
+}
